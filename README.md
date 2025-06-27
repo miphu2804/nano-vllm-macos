@@ -1,12 +1,14 @@
-# Nano-vLLM
+# Nano-vLLM (macOS/MPS Fork)
 
-A lightweight vLLM implementation built from scratch.
+> **Note:** This is a community fork of [nano-vllm](https://github.com/GeeeekExplorer/nano-vllm) specifically optimized for **macOS** with Metal Performance Shaders (MPS). All code related to CUDA, Linux, and distributed training has been removed to keep it lightweight. This fork is intended for Apple Silicon and Intel Macs using PyTorch MPS.
+
+A lightweight vLLM implementation, now macOS/MPS only.
 
 ## Key Features
 
-* 🚀 **Fast offline inference** - Comparable inference speeds to vLLM
-* 📖 **Readable codebase** - Clean implementation in ~ 1,200 lines of Python code
-* ⚡ **Optimization Suite** - Prefix caching, Tensor Parallelism, Torch compilation, CUDA graph, etc.
+* 🚀 **Fast offline inference on macOS** – Optimized for MPS, competitive speeds on Apple hardware
+* 📖 **Readable codebase** – Clean implementation in ~1,200 lines of Python
+* ⚡ **MPS-optimized** – Efficient KV cache, correct causal attention, eager execution
 
 ## Installation
 
@@ -16,7 +18,7 @@ pip install git+https://github.com/GeeeekExplorer/nano-vllm.git
 
 ## Manual Download
 
-If you prefer to download the model weights manually, use the following command:
+If you prefer to download model weights manually:
 ```bash
 huggingface-cli download --resume-download Qwen/Qwen3-0.6B \
   --local-dir ~/huggingface/Qwen3-0.6B/ \
@@ -25,34 +27,19 @@ huggingface-cli download --resume-download Qwen/Qwen3-0.6B \
 
 ## Quick Start
 
-See `example.py` for usage. The API mirrors vLLM's interface with minor differences in the `LLM.generate` method:
-```python
-from nanovllm import LLM, SamplingParams
-llm = LLM("/YOUR/MODEL/PATH", enforce_eager=True, tensor_parallel_size=1)
-sampling_params = SamplingParams(temperature=0.6, max_tokens=256)
-prompts = ["Hello, Nano-vLLM."]
-outputs = llm.generate(prompts, sampling_params)
-outputs[0]["text"]
-```
+See `example_macos.py` for usage on macOS. The API is similar to vLLM, but now optimized for MPS:
 
-## Benchmark
+## Benchmark (macOS/MPS)
 
-See `bench.py` for benchmark.
+See `test_macos_quick.py` for a quick test on macOS.
 
 **Test Configuration:**
-- Hardware: RTX 4070 Laptop (8GB)
+- Hardware: MacBook Pro M1/M2/M3 (16GB)
 - Model: Qwen3-0.6B
-- Total Requests: 256 sequences
-- Input Length: Randomly sampled between 100–1024 tokens
-- Output Length: Randomly sampled between 100–1024 tokens
+- Input: Example prompt, output ~13-15 tokens/s on MPS
 
-**Performance Results:**
-| Inference Engine | Output Tokens | Time (s) | Throughput (tokens/s) |
-|----------------|-------------|----------|-----------------------|
-| vLLM           | 133,966     | 98.37    | 1361.84               |
-| Nano-vLLM      | 133,966     | 93.41    | 1434.13               |
-
+**Note:** Performance on NVIDIA/CUDA GPUs or Linux is not supported in this fork.
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=GeeeekExplorer/nano-vllm&type=Date)](https://www.star-history.com/#GeeeekExplorer/nano-vllm&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=jacko06v/nano-vllm-macos&type=Date)](https://www.star-history.com/#jacko06v/nano-vllm-macos&Date)

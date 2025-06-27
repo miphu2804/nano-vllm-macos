@@ -3,20 +3,19 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nano-vllm"
+name = "nano-vllm-macos"
 version = "0.2.0"
-authors = [{ name = "Xingkai Yu" }]
+authors = [{ name = "Xingkai Yu" }, { name = "macOS Port Contributor" }]
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "README.md"
-description = "a lightweight vLLM implementation built from scratch"
+description = "a lightweight vLLM implementation optimized for macOS with MPS support"
 requires-python = ">=3.10,<3.13"
 dependencies = [
-    "torch>=2.4.0",
-    "triton>=3.0.0",
+    "torch>=2.4.0",  # With MPS support for Apple Silicon
     "transformers>=4.51.0",
-    "flash-attn",
     "xxhash",
+    "tqdm",  # For progress bars
 ]
 
 [project.urls]
