@@ -13,7 +13,7 @@ A lightweight vLLM implementation, now macOS/MPS only.
 ## Installation
 
 ```bash
-pip install git+https://github.com/GeeeekExplorer/nano-vllm.git
+pip install git+https://github.com/jacko06v/nano-vllm-macos.git
 ```
 
 ## Manual Download
@@ -29,9 +29,6 @@ huggingface-cli download --resume-download Qwen/Qwen3-0.6B \
 
 See `example_macos.py` for usage on macOS. The API is similar to vLLM, but now optimized for MPS:
 
-## Benchmark (macOS/MPS)
-
-See `test_macos_quick.py` for a quick test on macOS.
 
 **Test Configuration:**
 - Hardware: MacBook Pro M1/M2/M3 (16GB)
