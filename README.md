@@ -40,3 +40,11 @@ See `example_macos.py` for usage on macOS. The API is similar to vLLM, but now o
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=jacko06v/nano-vllm-macos&type=Date)](https://www.star-history.com/#jacko06v/nano-vllm-macos&Date)
+
+
+
+Hi! I really appreciate your fork. I'm currently working on running nano-vllm without CUDA on a CPU-only x86 Linux system.  
+Does this fork support `torch.device("cpu")`? Or should any additional changes be made to make it work?Because i am using intel cpu on thinkpad so i am not sure it can run like Mac intels you said 
+
+Thanks in advance!
+
